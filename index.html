@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+	<meta charset="UTF-8">
+	<title>Weather App</title>
+	<link rel="stylesheet" href="style.css" type="text/css">
+</head> 
+<body>
+	<div id="box">
+	  <div id="header" >
+	  
+	  </div>
+	  <div id="container"> 
+
+		<div id="kiri">
+<marquee bgcolor="#yellow" style="color:darkblue;font-family:Baskerville Old Face; font-size:50px;">Perkiraan Cuaca</marquee>
+
+<h1 style="font-size:300%"><center>Date and Time</center></h1>
+<div style="font-size:300%";"text-align: center>
+<div id="clock"></div>
+
+<script type="text/javascript">
+<!--
+function startTime() {
+    var today=new Date(),
+        curr_hour=today.getHours(),
+        curr_min=today.getMinutes(),
+        curr_sec=today.getSeconds();
+ curr_hour=checkTime(curr_hour);
+    curr_min=checkTime(curr_min);
+    curr_sec=checkTime(curr_sec);
+    document.getElementById('clock').innerHTML=curr_hour+":"+curr_min+":"+curr_sec;
+}
+function checkTime(i) {
+    if (i<10) {
+        i="0" + i;
+    }
+    return i;
+}
+setInterval(startTime, 500);
+//-->
+</script>
+</div>
+<br> </br>
+<br> </br>
+<br> </br>
+
+
+<h3><font face="verdana" color="red">Universitas Stikubank Semarang</font> </h3>
+
+<div id ="weather"></div>
+	<p>Temperature: <span id="temp"><span><p>
+	<p>Wins Speed: <span id="wind"><span><p>
+
+<script>
+var weather = new XMLHttpRequest();
+weather.open("GET","http://api.wunderground.com/api/dc6a2e8247981d34/conditions/q/CA/Mugassari.json", false);
+weather.send(null);
+
+var r = JSON.parse(weather.response);
+var weather = "Current location: "+ r.current_observation.display_location.full + "<br />";
+var temp = r.current_observation.temperature_string + "<br />";
+var wind = r.current_observation.wind_string + "<br />";
+
+document.getElementById("weather").innerHTML = weather;
+document.getElementById("temp").innerHTML = temp;
+document.getElementById("wind").innerHTML = wind;
+
+</script>	
+
+			</div>
+		<div class="clear"></div>
+	  </div> 
+	  <div id="footer">
+		<div id="copyright">
+		<b style="font-family:Baskerville Old Face; font-size:20px;">Yuvent Kasuya</b></div> 
+		<div id="copyright">Yuvent Kasuya 15.01.53.0175</div> 
+	  </div>
+	</div>
+</body> 
+</html>
